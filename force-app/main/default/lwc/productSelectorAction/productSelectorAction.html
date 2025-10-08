@@ -1,3 +1,18 @@
 <template>
-    
+    <lightning-quick-action-panel header="Búsqueda de Productos">
+        <lightning-input label="Buscar Producto" placeholder="Ingrese nombre o código del producto"
+                         value={searchKey} onchange={handleSearchKeyChange}>
+        </lightning-input>
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Cancelar"
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Guardar"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
 </template>
