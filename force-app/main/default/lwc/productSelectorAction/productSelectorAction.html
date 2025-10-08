@@ -1,8 +1,18 @@
 <template>
     <lightning-quick-action-panel header="Búsqueda de Productos">
+         <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+         </template>
         <lightning-input label="Buscar Producto" placeholder="Ingrese nombre o código del producto"
                          value={searchKey} onchange={handleSearchKeyChange}>
         </lightning-input>
+        <lightning-datatable
+            key-field="Id"
+            data={products}
+            columns={columns}
+            onrowselection={getSelectedName}
+            max-row-selection="1">
+        </lightning-datatable>
         <div slot="footer">
             <lightning-button
                 variant="neutral"
