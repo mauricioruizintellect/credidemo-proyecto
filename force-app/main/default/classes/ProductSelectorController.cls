@@ -13,4 +13,28 @@ public with sharing class ProductSelectorController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void updateProduct(String recordId, String productId, string objectName){
+        try {
+            if(objectName == 'Lead'){
+                Lead currentLead = new Lead(
+                    Id = recordId,
+                    ProductoInteres__c = productId
+                );
+                update currentLead;
+            }
+            if(objectName == 'Opportunity'){
+                Opportunity currentOpp = new Opportunity(
+                    Id = recordId,
+                    ProductoInteresProspecto__c = productId
+                );
+                update currentOpp;
+            }
+        } catch (Exception e) {
+            System.debug('error::::'+e);
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 }
